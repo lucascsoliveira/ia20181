@@ -9,6 +9,12 @@
 % Deve haver uma separação lógica entre as informações do ambiente e as informações do agente.     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%% Para executar o programa:
+%% ?- agente (X).
+
+%% TODO:
+%% - O caminho precisa ser invertido.
+
 maxLinha(4).
 maxColuna(8).
 
@@ -31,9 +37,6 @@ membro(X, [_|R]):- membro(X,R).
 
 nao_membro(X, Y):- \+membro(X,Y).
 
-% inverter([], []).
-% inverter(L, L).
-
 agente([X,Y|[]], PosVisitadas, [[X,Y]|PosVisitadas]):- pos_gol(X,Y).
 agente([X,Y|[]], PosVisitadas, Caminho):- 
     pos_valida(X,Y), pos_livre(X,Y), nao_membro([X,Y], PosVisitadas),
@@ -46,5 +49,7 @@ agente([X,Y|[]], PosVisitadas, Caminho):-
     ).
 
 agente(Caminho):- pos_agente(X,Y), agente([X,Y],[], Caminho).
+
+
 
 
